@@ -1,19 +1,18 @@
 class AutomakeAT116 < Formula
   desc "Tool for generating GNU Standards-compliant Makefiles"
   homepage "https://www.gnu.org/software/automake/"
-  url "https://ftp.gnu.org/gnu/automake/automake-1.16.1.tar.xz"
-  mirror "https://ftpmirror.gnu.org/automake/automake-1.16.1.tar.xz"
-  sha256 "5d05bb38a23fd3312b10aea93840feec685bdf4a41146e78882848165d3ae921"
-  revision 1
+  url "https://ftp.gnu.org/gnu/automake/automake-1.16.2.tar.xz"
+  mirror "https://ftpmirror.gnu.org/automake/automake-1.16.2.tar.xz"
+  sha256 "ccc459de3d710e066ab9e12d2f119bd164a08c9341ca24ba22c9adaa179eedd0"
+
+  bottle do
+    cellar :any_skip_relocation
+    sha256 "fe26d4df57481b6a7ca0a6915c37c53648c27ffb41926b3570c45f80fdd8888e" => :catalina
+    sha256 "fe26d4df57481b6a7ca0a6915c37c53648c27ffb41926b3570c45f80fdd8888e" => :mojave
+    sha256 "fe26d4df57481b6a7ca0a6915c37c53648c27ffb41926b3570c45f80fdd8888e" => :high_sierra
+  end
 
   depends_on "autoconf"
-
-  # https://lists.gnu.org/archive/html/bug-automake/2018-04/msg00002.html
-  # Remove this when applying any future 1.16.2 update.
-  patch do
-    url "https://git.savannah.gnu.org/cgit/automake.git/patch/?id=a348d830659fffd2cfc42994524783b07e69b4b5"
-    sha256 "7a57ca2b91f7f3c0b168cf5ffbc8a1b2168f3886bcadcc15412281472dace3ce"
-  end
 
   def install
     ENV["PERL"] = "/usr/bin/perl"
