@@ -6,19 +6,6 @@ class PkgConfigAT0292 < Formula
   sha256 "6fc69c01688c9458a57eb9a1664c9aba372ccda420a02bf4429fe610e7e7d591"
   revision 3
 
-  bottle do
-    cellar :any_skip_relocation
-    sha256 "80f141e695f73bd058fd82e9f539dc67471666ff6800c5e280b5af7d3050f435" => :catalina
-    sha256 "0d14b797dba0e0ab595c9afba8ab7ef9c901b60b4f806b36580ef95ebb370232" => :mojave
-    sha256 "8c6160305abd948b8cf3e0d5c6bb0df192fa765bbb9535dda0b573cb60abbe52" => :high_sierra
-  end
-
-  pour_bottle? do
-    # The pc_path is baked into the binary and relocatable detection doesn't pick it up
-    reason "The bottle only works in the default #{Homebrew::DEFAULT_PREFIX} location."
-    satisfy { HOMEBREW_PREFIX.to_s == Homebrew::DEFAULT_PREFIX }
-  end
-
   def install
     pc_path = %W[
       #{HOMEBREW_PREFIX}/lib/pkgconfig
