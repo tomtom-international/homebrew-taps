@@ -1,6 +1,7 @@
 class CmakeAT317 < Formula
   desc "Cross-platform make"
   homepage "https://www.cmake.org/"
+  license "BSD-3-Clause"
   head "https://gitlab.kitware.com/cmake/cmake.git"
 
   stable do
@@ -13,9 +14,20 @@ class CmakeAT317 < Formula
       url "https://gitlab.kitware.com/cmake/cmake/-/commit/c841d43d70036830c9fe16a6dbf1f28acf49d7e3.diff"
       sha256 "87de737abaf5f8c071abc4a4ae2e9cccced6a9780f4066b32ce08a9bc5d8edd5"
     end
+
+    # Adds macOS 11.0 compatibility.
+    # Remove with 3.18.0.
+    patch do
+      url "https://gitlab.kitware.com/cmake/cmake/-/commit/a0c4c27443afe1c423c08063e2eaf96ffa2f54fb.diff"
+      sha256 "7b84bc0dbb71c620939fb1e354f671e1d0007c9c8060ed3f2afe54a11f5e578c"
+    end
   end
 
   depends_on "sphinx-doc" => :build
+
+  on_linux do
+    depends_on "openssl@1.1"
+  end
 
   # The completions were removed because of problems with system bash
 
