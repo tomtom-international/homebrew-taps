@@ -5,7 +5,7 @@ class AutomakeAT116 < Formula
   mirror "https://ftpmirror.gnu.org/automake/automake-1.16.2.tar.xz"
   sha256 "ccc459de3d710e066ab9e12d2f119bd164a08c9341ca24ba22c9adaa179eedd0"
 
-  depends_on "autoconf"
+  depends_on "tomtom-international/taps/autoconf@2.69"
 
   def install
     ENV["PERL"] = "/usr/bin/perl"
